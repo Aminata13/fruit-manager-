@@ -1,0 +1,32 @@
+<div class="card">
+  <div class="card-body">
+    <h4 class="card-title">Liste des camions</h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Matricule</th>
+          <th>Marque</th>
+          <th>Couleur</th>
+          <th>Capacité en Kg</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let camion of camions" >
+          <td scope="row">{{camion.id}}</td>
+          <td>{{camion.matricule}}</td>
+          <td>{{camion.marque}}</td>
+          <td>{{camion.couleur}}</td>
+          <td>{{camion.capaciteEnKg}}</td>
+          <td>
+            <button [routerLink]="['/camion',camion.id,'show']" routerLinkActive="router-link-active"  type="button" name="btn" class="btn btn-info btn-sm">
+              voir <i class="fa fa-eye" aria-hidden="true"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>

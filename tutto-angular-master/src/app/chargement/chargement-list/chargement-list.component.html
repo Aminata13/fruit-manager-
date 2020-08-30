@@ -1,0 +1,35 @@
+<div class="card">
+  <div class="card-body">
+    <h4 class="card-title">Liste des chargements</h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Date</th>
+          <th>Numéro de chargement</th>
+          <th>Destination</th>
+          <th>Camion</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let chargement of chargements" >
+          <td scope="row">{{chargement.id}}</td>
+          <td>{{chargement.date}}</td>
+          <td>{{chargement.numeroChargement}}</td>
+          <td>{{chargement.destination}}</td>
+          <td>{{chargement.camion.id}}</td>
+          <td>
+            <button [routerLink]="['/chargement',chargement.id,'show']" routerLinkActive="router-link-active"  type="button" name="btn" class="btn btn-info btn-sm">
+              voir <i class="fa fa-eye" aria-hidden="true"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class = "text-right" style="background-color: rgb(241, 237, 237);">
+  <button [routerLink]="['/chargement', 'new']" routerLinkActive="router-link-active"  style="margin: 10px;" type="button" class="btn btn-outline-primary">Nouveau <i class="fa fa-plus-square"></i></button>
+</div>
+

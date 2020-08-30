@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"> {{depot.nom}} </h5>
+          <p class="card-text"> {{depot.adresse}} </p>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title"> Gardient </h5>
+          <p class="card-text"> Prénom & Nom : {{depot.nomGardien}} <br> Téléphone: {{depot.telephone}}
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Liste des fruits du stock</h4>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Provenance</th>
+                <th>Prix Unitaire</th>
+                <th>Quantité</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let fruit of fruits" >
+                <td scope="row"> {{fruit.id}} </td>
+                <td> {{fruit.nom}} </td>
+                <td> {{fruit.provenance}} </td>
+                <td> {{fruit.prixUnitaire}} </td>
+                <td> {{fruit.quantiteStock}}  </td>
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

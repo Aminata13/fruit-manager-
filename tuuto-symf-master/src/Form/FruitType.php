@@ -1,0 +1,29 @@
+<?php
+
+namespace App\Form;
+
+use App\Entity\Fruit;
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+
+class FruitType extends AbstractType
+{
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+        $builder
+            ->add('nom')
+            ->add('provenance')
+            ->add('prixUnitaire')
+            ->add('quantiteStock')
+            ->add('depot')
+        ;
+    }
+
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults([
+            'data_class' => Fruit::class,
+        ]);
+    }
+}

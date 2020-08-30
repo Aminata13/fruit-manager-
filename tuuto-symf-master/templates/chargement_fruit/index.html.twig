@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ChargementFruit index{% endblock %}
+
+{% block body %}
+    <h1>ChargementFruit index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Quantite</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for chargement_fruit in chargement_fruits %}
+            <tr>
+                <td>{{ chargement_fruit.id }}</td>
+                <td>{{ chargement_fruit.quantite }}</td>
+                <td>
+                    <a href="{{ path('chargement_fruit_show', {'id': chargement_fruit.id}) }}">show</a>
+                    <a href="{{ path('chargement_fruit_edit', {'id': chargement_fruit.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('chargement_fruit_new') }}">Create new</a>
+{% endblock %}

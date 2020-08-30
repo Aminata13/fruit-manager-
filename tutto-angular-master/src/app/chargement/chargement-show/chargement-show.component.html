@@ -1,0 +1,90 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Chargement</h5>
+          <p class="card-text"> Date: {{chargement.date}} <br> Destination: {{chargement.destination}} </p>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Camion</h5>
+          <p class="card-text"> Matricule: {{chargement.camion.matricule}} <br> Marque: {{chargement.camion.marque}}
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm">
+      <div class="card">
+        <div class="card-header">
+          Formulaire d'ajout de fruit
+        </div>
+        <div class="card-body">
+        <form [formGroup]="form" (ngSubmit)="onFormSubmit()" style="margin: 13px;">
+          <div>
+            <h5>Ajout de fruit au chargement</h5>
+          </div>
+          <div class="form-group">
+            <label for="fruits">Fruit</label>
+            <select class="custom-select" formControlName="fruit" id="fruits">
+              <option value="" disabled>Choisissez le fruit</option>
+              <option *ngFor="let fruit of fruits" [value]="fruit.id">{{fruit.nom}}</option>
+            </select>
+            <div *ngIf="formControlFruit.invalid && (formControlFruit.dirty || formControlFruit.touched)"
+            class="alert alert-danger">
+              <div *ngIf="formControlFruit.errors.required">
+                Ce champ est obligatoire.
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="destination">Quantité</label>
+            <input type="number" class="form-control" id="quantite" formControlName="quantite"
+              aria-describedby="quantiteHelp" placeholder="Entrez la quantité" required>
+            <div *ngIf="quantite.invalid && (quantite.dirty || quantite.touched)"
+            class="alert alert-danger">
+              <div *ngIf="quantite.errors.required">
+                Ce champ est obligatoire.
+              </div>
+              <div *ngIf="quantite.errors.max">
+                Ce chargement ne peut pas prendre plus de {{chargement.camion.capaciteEnKg}} kg.
+              </div>
+            </div>
+          </div>
+          <div>
+            <button type="submit" [disabled]="!form.valid" class="btn btn-primary" style="margin: 10px;">Ajouter <i
+                class="fa fa-plus-square"></i></button>
+          </div>
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br><br>
+<div class="card">
+  <div class="card-body">
+    <h4 class="card-title">Liste des fruits ajoutés</h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Nom</th>
+          <th>Provenance</th>
+          <th>Prix Unitaire</th>
+          <th>Quantité</th>
+          <th>Dépôt</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let fc of fruitsChargement" >
+          <td scope="row">{{fc.fruit.id}}</td>
+          <td>{{fc.fruit.nom}}</td>
+          <td>{{fc.fruit.provenance}}</td>
+          <td>{{fc.fruit.prixUnitaire}}</td>
+          <td>{{fc.quantite}}</td>
+          <td>{{fc.fruit.depot.nom}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

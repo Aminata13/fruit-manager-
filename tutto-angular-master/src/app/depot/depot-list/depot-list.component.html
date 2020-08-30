@@ -1,0 +1,32 @@
+<div class="card">
+  <div class="card-body">
+    <h4 class="card-title">Liste des dépôts</h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Nom</th>
+          <th>Adresse</th>
+          <th>Gardien</th>
+          <th>Numéro du gardien </th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let depot of depots" >
+          <td scope="row">{{depot.id}}</td>
+          <td>{{depot.nom}}</td>
+          <td>{{depot.adresse}}</td>
+          <td>{{depot.nomGardien}}</td>
+          <td>{{depot.telephone}}</td>
+          <td>
+            <button [routerLink]="['/depot',depot.id,'show']" routerLinkActive="router-link-active"  type="button" name="btn" class="btn btn-info btn-sm">
+              voir <i class="fa fa-eye" aria-hidden="true"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>

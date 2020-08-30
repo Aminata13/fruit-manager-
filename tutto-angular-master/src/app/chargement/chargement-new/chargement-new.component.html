@@ -1,0 +1,39 @@
+<div>
+  <div style="background-color: rgb(241, 237, 237); padding: 10px;">
+    <h4>Formulaire de création d'un chargement</h4>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="onFormSubmit()" style="margin: 13px;">
+    <div style="padding: 10px;">
+      <h5>Nouveau chargement</h5>
+    </div>
+    <div class="form-group">
+      <label for="destination">Destination</label>
+      <input type="email" class="form-control" id="destination" formControlName="destination"
+        aria-describedby="emailHelp" placeholder="Entrez la destination">
+      <div *ngIf="destination.invalid && (destination.dirty || destination.touched)"
+        class="alert alert-danger">
+        <div *ngIf="destination.errors.required">
+          Ce champ est obligatoire.
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="camion">Camion</label>
+      <select class="custom-select" formControlName="camion" id="camions">
+        <option value="" disabled>Choisissez le camion</option>
+        <option *ngFor="let camion of camions" [value]="camion.id">{{camion.matricule}}</option>
+      </select>
+      <div *ngIf="camion.invalid && (camion.dirty || camion.touched)"
+        class="alert alert-danger">
+        <div *ngIf="camion.errors.required">
+          Ce champ est obligatoire.
+        </div>
+      </div>
+    </div>
+    <div class="text-right" style="background-color: rgb(241, 237, 237);">
+      <button type="submit" [disabled]="!form.valid" class="btn btn-success" style="margin: 10px;">Enregistrer <i
+          class="fa fa-plus-square"></i></button>
+    </div>
+  </form>
+</div>

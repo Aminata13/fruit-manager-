@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Chargement index{% endblock %}
+
+{% block body %}
+    <h1>Chargement index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>NumeroChargement</th>
+                <th>Destination</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for chargement in chargements %}
+            <tr>
+                <td>{{ chargement.id }}</td>
+                <td>{{ chargement.date ? chargement.date|date('Y-m-d') : '' }}</td>
+                <td>{{ chargement.numeroChargement }}</td>
+                <td>{{ chargement.destination }}</td>
+                <td>
+                    <a href="{{ path('chargement_show', {'id': chargement.id}) }}">show</a>
+                    <a href="{{ path('chargement_edit', {'id': chargement.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('chargement_new') }}">Create new</a>
+{% endblock %}
